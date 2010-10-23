@@ -1,10 +1,23 @@
 #include<stdio.h>
 #include<string.h>
 #include"FileNameTools.h"
+
+
 int GetDir(char *whole,char* dir)
-{ 
+{
 	char *index;
 	int len;                      /*储存长度*/
+
+	if(NULL == whole)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
+	if(NULL == whole)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
 	index=strrchr(whole,'/');     /*查找'/'在字符串whole中从后面开始的第一次出现的位置，并从此到末尾复制给index*/
 	len=index-whole;
 	strncpy(dir,whole,len);       /*将字符串whole中前len个字符拷贝到字符串dir中*/
@@ -14,9 +27,20 @@ int GetDir(char *whole,char* dir)
 
 int GetName(char *whole,char* Name)
 {
-    int len;                               
+    int len;
     char *rname,*lname;                 /*name字符串的左边和右边*/
-    lname=strrchr(whole,'/');		//已经在GetDir中说明	
+
+	if(NULL == whole)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
+	if(NULL == Name)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
+	lname=strrchr(whole,'/');		//已经在GetDir中说明
     lname++;				//多复制了'/'，所以指针向右移一位
     rname=strrchr(whole,'.');		//拷贝拓展名
     len=rname-lname;			//得到不含拓展名的文件名的长度
@@ -30,6 +54,17 @@ int GetExt(char *whole,char* Ext)
 {
    char *index;
    int len;
+
+	if(NULL == whole)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
+	if(NULL == Ext)
+	{
+		printf("Pointer is NULL @%s,%d",__FILE__,__LINE__);
+	}
+
    index=strrchr(whole,'.');		//将拓展名(也就是文件名后缀)拷贝
    index++;				//多复制了'.'，故指针右移一位
    len=strlen(whole)-strlen(index);	//得到拓展名的长度
